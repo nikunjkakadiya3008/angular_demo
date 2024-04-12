@@ -1,0 +1,138 @@
+<!-- for Intro -->
+<ng-walkthrough
+  #intro
+  focusElementSelector="#intro_id"
+  focusBackdrop="true"
+  [contentTemplate]="intro_temp"
+  contentStyle="none"
+  finishButton="true"
+  [texts]="['frenchText']"
+  showArrow="true"
+>
+  <ng-template #intro_temp>
+    <p>{{ hintText }}</p>
+  </ng-template>
+</ng-walkthrough>
+
+<!-- for Timer -->
+<ng-walkthrough
+  #timer
+  focusElementSelector="#timer_id"
+  focusBackdrop="true"
+  [contentTemplate]="timer_temp"
+  contentStyle="none"
+  finishButton="true"
+  [texts]="['frenchText']"
+  showArrow="true"
+>
+  <ng-template #timer_temp>
+    <p>{{ hintText }}</p>
+  </ng-template>
+</ng-walkthrough>
+
+<!-- for Selfie -->
+<ng-walkthrough
+  #selfie
+  focusElementSelector="#selfie_id"
+  focusBackdrop="true"
+  [contentTemplate]="selfie_temp"
+  contentStyle="none"
+  finishButton="true"
+  [texts]="['frenchText']"
+  showArrow="true"
+>
+  <ng-template #selfie_temp>
+    <p>{{ hintText }}</p>
+  </ng-template>
+</ng-walkthrough>
+
+<!-- for Selfie -->
+<ng-walkthrough
+  #video
+  focusElementSelector="#video_id"
+  focusBackdrop="true"
+  [contentTemplate]="video_temp"
+  contentStyle="none"
+  finishButton="true"
+  [texts]="['frenchText']"
+  showArrow="true"
+>
+  <ng-template #video_temp>
+    <p>{{ hintText }}</p>
+  </ng-template>
+</ng-walkthrough>
+
+<!-- for prep -->
+<ng-walkthrough #prep focusElementSelector="#prep_id" focusBackdrop="true" [contentTemplate]="prep_temp" contentStyle="none" finishButton="true" showArrow="true">
+  <ng-template #prep_temp>
+    <p>{{ hintText }}</p>
+  </ng-template>
+</ng-walkthrough>
+
+<!-- for chat -->
+<ng-walkthrough #chat focusElementSelector="#chat_id" focusBackdrop="true" [contentTemplate]="chat_temp" contentStyle="none" finishButton="true" showArrow="true">
+  <ng-template #chat_temp>
+    <p>{{ hintText }}</p>
+  </ng-template>
+</ng-walkthrough>
+
+<!-- for meetup -->
+<ng-walkthrough #meetup focusElementSelector="#meetup_id" focusBackdrop="true" [contentTemplate]="meetup_temp" contentStyle="none" finishButton="true" showArrow="true">
+  <ng-template #meetup_temp>
+    <p>{{ hintText }}</p>
+  </ng-template>
+</ng-walkthrough>
+
+<!-- for tutorial -->
+<ng-walkthrough #tutorial focusElementSelector="#tutorial_id" focusBackdrop="true" [contentTemplate]="tutorial_temp" contentStyle="none" finishButton="true" showArrow="true">
+  <ng-template #tutorial_temp>
+    <p>{{ hintText }}</p>
+  </ng-template>
+</ng-walkthrough>
+
+<section class="main-container">
+  <div>
+    <button class="btn-back" (click)="backToLast()">BACK</button>
+  </div>
+  <div class="div-main-fab">
+    <div class="fab-container">
+      <button id="intro_id" mat-fab (click)="intro.open()">
+        {{ tabMenu[0] }}
+      </button>
+      <button id="timer_id" mat-fab (click)="timer.open()">
+        {{ tabMenu[1] }}
+      </button>
+      <button id="selfie_id" mat-fab (click)="selfie.open()">
+        {{ tabMenu[2] }}
+      </button>
+      <button id="video_id" mat-fab (click)="video.open()">
+        {{ tabMenu[3] }}
+      </button>
+      <button id="prep_id" mat-fab (click)="prep.open()">
+        {{ tabMenu[4] }}
+      </button>
+      <button id="chat_id" mat-fab (click)="chat.open()">
+        {{ tabMenu[5] }}
+      </button>
+      <button id="meetup_id" mat-fab (click)="meetup.open()">
+        {{ tabMenu[6] }}
+      </button>
+      <button id="tutorial_id" mat-fab (click)="tutorial.open()">
+        {{ tabMenu[7] }}
+      </button>
+    </div>
+  </div>
+
+  <div class="swiper-main mt-auto">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide slide-item">{{ tabMenu[0] }}</div>
+      <div class="swiper-slide slide-item">{{ tabMenu[1] }}</div>
+      <div class="swiper-slide slide-item">{{ tabMenu[2] }}</div>
+      <div class="swiper-slide slide-item">{{ tabMenu[3] }}</div>
+      <div class="swiper-slide slide-item">{{ tabMenu[4] }}</div>
+      <div class="swiper-slide slide-item">{{ tabMenu[5] }}</div>
+      <div class="swiper-slide slide-item">{{ tabMenu[6] }}</div>
+      <div class="swiper-slide slide-item">{{ tabMenu[7] }}</div>
+    </div>
+  </div>
+</section>

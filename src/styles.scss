@@ -43,10 +43,13 @@ $ns-outlook-add-in-theme: mat.define-dark-theme(
 @import 'assets/styles/dark.scss';
 @import 'assets/styles/typography.scss';
 @import '../node_modules/nextsapien-component-lib/src/lib/shared-styles/styles.scss';
+@import '~swiper/swiper-bundle.css';
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
 body {
   margin: 0;
   background: var(--primary-background);
   width: 100%;
   height: 100vh;
+  font-family: 'Lato', sans-serif;
 }

@@ -1,0 +1,21 @@
+.page-content {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+  }
+}
+
+.btn-primary {
+  --mdc-filled-button-label-text-color: black;
+  --mdc-filled-button-container-color: #dadada;
+  --mat-text-button-ripple-color: rgba(63, 81, 181, 0.1);
+  padding: 26px 32px;
+  font-size: 16px;
+}
