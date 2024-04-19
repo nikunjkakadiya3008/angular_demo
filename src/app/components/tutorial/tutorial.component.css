@@ -3,13 +3,22 @@
   display: flex;
   flex-direction: column;
 
-  .btn-back {
-    padding: 17px;
+  .back-btn {
+    padding: 8px;
     position: absolute;
-    background: none;
-    color: white;
-    font-size: 20px;
-    border: 0px;
+    background: #dadada;
+    margin: 12px 0 0 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+    width: 32px;
+    height: 32px;
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
   }
 }
 
@@ -26,6 +35,8 @@
 .slide-item {
   color: white;
   text-align: center;
+  font-family: 'gilroy-medium';
+  font-size: 16px;
 }
 
 .div-main-fab {
@@ -40,9 +51,45 @@
     right: 20px;
     flex-direction: column;
     display: flex;
+    z-index: 2;
   }
 
   .fab-container button {
     margin-bottom: 10px;
+    background: #f07499;
+
+    &.active {
+      background: var(--primary-color);
+      box-shadow: #f07499 0px 10px 50px;
+    }
+  }
+}
+
+.swiper-slide-active {
+  filter: blur(0px) !important;
+}
+
+.swiper-slide {
+  filter: blur(1px);
+}
+
+.p-walkthrough {
+  font-size: 16px;
+  text-align: center;
+}
+
+/* Media query for screens up to 320px width */
+@media screen and (max-width: 560px) {
+  .div-main-fab {
+    .fab-container button {
+      width: var(--button-width);
+      height: 50px;
+      margin-bottom: 6px;
+      font-size: 12px;
+    }
+  }
+
+  .p-walkthrough {
+    font-size: 12px;
   }
 }

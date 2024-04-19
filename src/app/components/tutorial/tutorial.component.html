@@ -1,138 +1,104 @@
 <!-- for Intro -->
-<ng-walkthrough
-  #intro
-  focusElementSelector="#intro_id"
-  focusBackdrop="true"
-  [contentTemplate]="intro_temp"
-  contentStyle="none"
-  finishButton="true"
-  [texts]="['frenchText']"
-  showArrow="true"
->
+<ng-walkthrough #intro focusElementSelector="#intro_id" focusBackdrop="true" [contentTemplate]="intro_temp"
+  contentStyle="none" showArrow="true" alignContent="center">
   <ng-template #intro_temp>
-    <p>{{ hintText }}</p>
+    <p class="p-walkthrough">{{ tabMenu[0].hintText }}</p>
   </ng-template>
 </ng-walkthrough>
 
 <!-- for Timer -->
-<ng-walkthrough
-  #timer
-  focusElementSelector="#timer_id"
-  focusBackdrop="true"
-  [contentTemplate]="timer_temp"
-  contentStyle="none"
-  finishButton="true"
-  [texts]="['frenchText']"
-  showArrow="true"
->
+<ng-walkthrough #timer focusElementSelector="#timer_id" focusBackdrop="true" [contentTemplate]="timer_temp"
+  contentStyle="none" showArrow="true" alignContent="center">
   <ng-template #timer_temp>
-    <p>{{ hintText }}</p>
+    <p class="p-walkthrough">{{ tabMenu[1].hintText }}</p>
   </ng-template>
 </ng-walkthrough>
 
 <!-- for Selfie -->
-<ng-walkthrough
-  #selfie
-  focusElementSelector="#selfie_id"
-  focusBackdrop="true"
-  [contentTemplate]="selfie_temp"
-  contentStyle="none"
-  finishButton="true"
-  [texts]="['frenchText']"
-  showArrow="true"
->
+<ng-walkthrough #selfie focusElementSelector="#selfie_id" focusBackdrop="true" [contentTemplate]="selfie_temp"
+  contentStyle="none" showArrow="true" alignContent="center">
   <ng-template #selfie_temp>
-    <p>{{ hintText }}</p>
+    <p class="p-walkthrough">{{ tabMenu[2].hintText }}</p>
   </ng-template>
 </ng-walkthrough>
 
 <!-- for Selfie -->
-<ng-walkthrough
-  #video
-  focusElementSelector="#video_id"
-  focusBackdrop="true"
-  [contentTemplate]="video_temp"
-  contentStyle="none"
-  finishButton="true"
-  [texts]="['frenchText']"
-  showArrow="true"
->
+<ng-walkthrough #video focusElementSelector="#video_id" focusBackdrop="true" [contentTemplate]="video_temp"
+  contentStyle="none" showArrow="true" alignContent="center">
   <ng-template #video_temp>
-    <p>{{ hintText }}</p>
+    <p class="p-walkthrough">{{ tabMenu[3].hintText }}</p>
   </ng-template>
 </ng-walkthrough>
 
 <!-- for prep -->
-<ng-walkthrough #prep focusElementSelector="#prep_id" focusBackdrop="true" [contentTemplate]="prep_temp" contentStyle="none" finishButton="true" showArrow="true">
+<ng-walkthrough #prep focusElementSelector="#prep_id" focusBackdrop="true" [contentTemplate]="prep_temp"
+  contentStyle="none" showArrow="true" alignContent="center">
   <ng-template #prep_temp>
-    <p>{{ hintText }}</p>
+    <p class="p-walkthrough">{{ tabMenu[4].hintText }}</p>
   </ng-template>
 </ng-walkthrough>
 
 <!-- for chat -->
-<ng-walkthrough #chat focusElementSelector="#chat_id" focusBackdrop="true" [contentTemplate]="chat_temp" contentStyle="none" finishButton="true" showArrow="true">
+<ng-walkthrough #chat focusElementSelector="#chat_id" focusBackdrop="true" [contentTemplate]="chat_temp"
+  contentStyle="none" showArrow="true" alignContent="center">
   <ng-template #chat_temp>
-    <p>{{ hintText }}</p>
+    <p class="p-walkthrough">{{ tabMenu[5].hintText }}</p>
   </ng-template>
 </ng-walkthrough>
 
 <!-- for meetup -->
-<ng-walkthrough #meetup focusElementSelector="#meetup_id" focusBackdrop="true" [contentTemplate]="meetup_temp" contentStyle="none" finishButton="true" showArrow="true">
+<ng-walkthrough #meetup focusElementSelector="#meetup_id" focusBackdrop="true" [contentTemplate]="meetup_temp"
+  contentStyle="none" showArrow="true" alignContent="center">
   <ng-template #meetup_temp>
-    <p>{{ hintText }}</p>
+    <p class="p-walkthrough">{{ tabMenu[6].hintText }}</p>
   </ng-template>
 </ng-walkthrough>
 
 <!-- for tutorial -->
-<ng-walkthrough #tutorial focusElementSelector="#tutorial_id" focusBackdrop="true" [contentTemplate]="tutorial_temp" contentStyle="none" finishButton="true" showArrow="true">
+<ng-walkthrough #tutorial focusElementSelector="#tutorial_id" focusBackdrop="true" [contentTemplate]="tutorial_temp"
+  contentStyle="none" showArrow="true" alignContent="center">
   <ng-template #tutorial_temp>
-    <p>{{ hintText }}</p>
+    <p class="p-walkthrough">{{ tabMenu[7].hintText }}</p>
   </ng-template>
 </ng-walkthrough>
 
-<section class="main-container">
+<!-- for location -->
+<ng-walkthrough #location focusElementSelector="#location_id" focusBackdrop="true" [contentTemplate]="location_temp"
+  contentStyle="none" showArrow="true" alignContent="center">
+  <ng-template #location_temp>
+    <p class="p-walkthrough">{{ tabMenu[8].hintText }}</p>
+  </ng-template>
+</ng-walkthrough>
+
+<section class="main-container" id="main-con">
   <div>
-    <button class="btn-back" (click)="backToLast()">BACK</button>
+    <!-- <button class="btn-back" (click)="backToLast()">BACK</button> -->
+    <button (click)="backToLast()" mat-mini-fab color="primary" class="back-btn">
+      <img src="../../../assets/icons/close-icon.svg" alt="">
+    </button>
   </div>
   <div class="div-main-fab">
     <div class="fab-container">
-      <button id="intro_id" mat-fab (click)="intro.open()">
-        {{ tabMenu[0] }}
-      </button>
-      <button id="timer_id" mat-fab (click)="timer.open()">
-        {{ tabMenu[1] }}
-      </button>
-      <button id="selfie_id" mat-fab (click)="selfie.open()">
-        {{ tabMenu[2] }}
-      </button>
-      <button id="video_id" mat-fab (click)="video.open()">
-        {{ tabMenu[3] }}
-      </button>
-      <button id="prep_id" mat-fab (click)="prep.open()">
-        {{ tabMenu[4] }}
-      </button>
-      <button id="chat_id" mat-fab (click)="chat.open()">
-        {{ tabMenu[5] }}
-      </button>
-      <button id="meetup_id" mat-fab (click)="meetup.open()">
-        {{ tabMenu[6] }}
-      </button>
-      <button id="tutorial_id" mat-fab (click)="tutorial.open()">
-        {{ tabMenu[7] }}
-      </button>
+      <ng-container *ngFor="let item of tabMenu; let i = index">
+        <button [id]="item.id" mat-fab (click)="openWalkthrough(i)" [class.active]="activeIndex === i">
+          {{ item.buttonName }}
+        </button>
+      </ng-container>
     </div>
   </div>
 
-  <div class="swiper-main mt-auto">
+
+  <div class="swiper-main mt-auto" style="z-index: 2;">
     <div class="swiper-wrapper">
-      <div class="swiper-slide slide-item">{{ tabMenu[0] }}</div>
-      <div class="swiper-slide slide-item">{{ tabMenu[1] }}</div>
-      <div class="swiper-slide slide-item">{{ tabMenu[2] }}</div>
-      <div class="swiper-slide slide-item">{{ tabMenu[3] }}</div>
-      <div class="swiper-slide slide-item">{{ tabMenu[4] }}</div>
-      <div class="swiper-slide slide-item">{{ tabMenu[5] }}</div>
-      <div class="swiper-slide slide-item">{{ tabMenu[6] }}</div>
-      <div class="swiper-slide slide-item">{{ tabMenu[7] }}</div>
+      <div class="swiper-slide slide-item">{{ tabMenu[0].tabName }}</div>
+      <div class="swiper-slide slide-item">{{ tabMenu[1].tabName }}</div>
+      <div class="swiper-slide slide-item">{{ tabMenu[2].tabName }}</div>
+      <div class="swiper-slide slide-item">{{ tabMenu[3].tabName }}</div>
+      <div class="swiper-slide slide-item">{{ tabMenu[4].tabName }}</div>
+      <div class="swiper-slide slide-item">{{ tabMenu[5].tabName }}</div>
+      <div class="swiper-slide slide-item">{{ tabMenu[6].tabName }}</div>
+      <div class="swiper-slide slide-item">{{ tabMenu[7].tabName }}</div>
+      <div class="swiper-slide slide-item">{{ tabMenu[8].tabName }}</div>
     </div>
   </div>
 </section>

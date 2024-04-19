@@ -4,9 +4,8 @@
 // @import '@angular/material/theming';
 // Plus imports for other components in your app.
 
-$custom-typography: mat.define-typography-config(
-  $font-family: 'Gilroy-Regular, serif',
-);
+$custom-typography: mat.define-typography-config($font-family: 'Gilroy-Regular, serif',
+  );
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
@@ -23,22 +22,20 @@ $ns-outlook-add-in-accent: mat.define-palette(mat.$pink-palette);
 $ns-outlook-add-in-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$ns-outlook-add-in-theme: mat.define-dark-theme(
-  (
-    color: (
-      primary: $ns-outlook-add-in-primary,
-      accent: $ns-outlook-add-in-accent,
-      warn: $ns-outlook-add-in-warn,
-    ),
-    typography: $custom-typography,
-    density: -12,
-  )
-);
+$ns-outlook-add-in-theme: mat.define-dark-theme((color: (primary: $ns-outlook-add-in-primary,
+        accent: $ns-outlook-add-in-accent,
+        warn: $ns-outlook-add-in-warn,
+      ),
+      typography: $custom-typography,
+      density: -12,
+    ));
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include mat.all-component-themes($ns-outlook-add-in-theme); /* You can add global styles to this file, and also import other style files */ // imports theming files'
+@include mat.all-component-themes($ns-outlook-add-in-theme);
+/* You can add global styles to this file, and also import other style files */
+// imports theming files'
 
 @import 'assets/styles/dark.scss';
 @import 'assets/styles/typography.scss';
@@ -46,10 +43,60 @@ $ns-outlook-add-in-theme: mat.define-dark-theme(
 @import '~swiper/swiper-bundle.css';
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
+@font-face {
+  font-family: 'gilroy-regular';
+  src: url('../src/assets/fonts/gilroy/Gilroy-Regular_0.ttf');
+}
+
+@font-face {
+  font-family: 'gilroy-medium';
+  src: url('../src/assets/fonts/gilroy/Gilroy-Medium_0.ttf');
+}
+
+@font-face {
+  font-family: 'gilroy-thin';
+  src: url('../src/assets/fonts/gilroy/Gilroy-Thin_0.ttf');
+}
+
+:root {
+  --button-width: 56px;
+}
+
 body {
   margin: 0;
   background: var(--primary-background);
   width: 100%;
   height: 100vh;
   font-family: 'Lato', sans-serif;
+}
+
+walkthrough-container {
+  height: unset !important;
+  overflow: hidden;
+
+  .wkt-content {
+    min-width: unset !important;
+    width: calc(100vw - (var(--button-width) + 45px)) !important;
+    margin: 5px !important;
+  }
+
+  .wkt-navigate {
+    display: none !important;
+  }
+
+  .wkt-zone {
+    border-radius: 99999px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  :root {
+    --button-width: 50px;
+  }
+
+  walkthrough-container {
+    .wkt-content {
+      width: calc(100vw - (var(--button-width) + 36px)) !important;
+    }
+  }
 }

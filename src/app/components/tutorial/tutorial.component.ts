@@ -1,6 +1,7 @@
 import { Location } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { WalkthroughComponent } from 'angular-walkthrough';
 import { take, timer } from 'rxjs';
 import { tabMenus } from 'src/app/shared/constant';
 import Swiper from 'swiper';
@@ -11,14 +12,19 @@ import Swiper from 'swiper';
   styleUrl: './tutorial.component.css',
 })
 export class TutorialComponent implements OnInit {
+  @ViewChild('intro') intro;
+  @ViewChild('timer') timer;
+  @ViewChild('selfie') selfie;
+  @ViewChild('tutorial') tutorial;
+  @ViewChild('meetup') meetup;
+  @ViewChild('chat') chat;
+  @ViewChild('prep') prep;
+  @ViewChild('video') video;
+  @ViewChild('location') location_;
+
+  activeIndex: number = -1;
   tabMenu = tabMenus;
-  hintText = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque varius blandit dolor, sit amet
-      condimentum eros vulputate sed. Aenean maximus dui a lobortis pharetra. Suspendisse potenti. Nulla facilisi.
-      Suspendisse potenti. Integer porta nec arcu molestie sodales. Pellentesque et diam tellus. Quisque at nisi
-      id neque tempus varius. Donec vestibulum nisi ac risus laoreet lobortis. Cras tristique et sem mollis
-      vehicula. Nulla maximus urna a leo consectetur, at fringilla odio volutpat. Praesent ultricies nunc eget
-      tellus convallis, non hendrerit augue semper. Maecenas elit ex, lobortis at sapien sed, fermentum volutpat
-      sem.`;
+  swiper: Swiper;
 
   constructor(
     private location: Location,
@@ -26,7 +32,7 @@ export class TutorialComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const swiper = new Swiper('.swiper-main', {
+    this.swiper = new Swiper('.swiper-main', {
       slidesPerView: 3,
       centeredSlides: true,
       spaceBetween: 30,
@@ -43,37 +49,67 @@ export class TutorialComponent implements OnInit {
           .subscribe(() => {
             let doc = document.getElementById('chat_id');
             if (doc) {
-              swiper.slideTo(5);
+              this.swiper.slideTo(5);
               doc.click();
             }
           });
       }
     });
 
-    swiper.slides.forEach((slide, index) => {
+    this.swiper.slides.forEach((slide, index) => {
       slide.addEventListener('click', () => {
-        swiper.slideTo(index);
+        this.swiper.slideTo(index);
         let doc: HTMLElement;
-        if (index == 0) {
-          doc = document.getElementById('intro_id');
-        } else if (index == 1) {
-          doc = document.getElementById('timer_id');
-        } else if (index == 2) {
-          doc = document.getElementById('selfie_id');
-        } else if (index == 3) {
-          doc = document.getElementById('video_id');
-        } else if (index == 4) {
-          doc = document.getElementById('prep_id');
-        } else if (index == 5) {
-          doc = document.getElementById('chat_id');
-        } else if (index == 6) {
-          doc = document.getElementById('meetup_id');
-        } else if (index == 7) {
-          doc = document.getElementById('tutorial_id');
-        }
+        doc = document.getElementById(this.tabMenu[index].id);
         doc.click();
       });
     });
+  }
+
+  openWalkthrough(index: number) {
+    this.activeIndex = index;
+    this.swiper.slideTo(index);
+    if (WalkthroughComponent.walkthroughHasShow()) {
+      const button = document.querySelector('.wkt-finish-link');
+
+      if (button) {
+        const clickEvent = new Event('click');
+        button.dispatchEvent(clickEvent);
+      }
+    }
+    setTimeout(() => {
+      switch (index) {
+        case 0:
+          this.intro.open();
+          break;
+        case 1:
+          this.timer.open();
+          break;
+        case 2:
+          this.selfie.open();
+          break;
+        case 3:
+          this.video.open();
+          break;
+        case 4:
+          this.prep.open();
+          break;
+        case 5:
+          this.chat.open();
+          break;
+        case 6:
+          this.meetup.open();
+          break;
+        case 7:
+          this.tutorial.open();
+          break;
+        case 8:
+          this.location_.open();
+          break;
+        default:
+          break;
+      }
+    }, 200);
   }
 
   backToLast() {
